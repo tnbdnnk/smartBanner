@@ -1,38 +1,52 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="uk">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="index.css">
-    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/1.1.0/modern-normalize.min.css"
+    integrity="sha512-wpPYUAdjBVSE4KJnH1VR1HeZfpl1ub8YT/NKx4PuQ5NmX2tKuGu6U/JRp5y+Y8XG2tV+wKQpNHVUX03MfMFn9Q=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Банківський сервіс</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 20px;
-            background-color: #1a1a1a;
-            display: flex;
-            justify-content: center;
-        }
+            font-family: "Roboto", sans-serif;
+            font-size: 14px;
+            letter-spacing: 0.03em;
+            background-color: #ffffff;
+            }
 
         .container {
-            width: 375px;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+
             background-color: white;
             border-radius: 10px;
-            padding: 15px;
+            /*padding: 15px;*/
+            
         }
 
-        .header {
+        /* 🔹 Банер-кнопка */
+        .banner {
+            /* position: fixed; */
+            /* top: 0; */
+            /* left: 50%; */
+            /* transform: translateX(-50%); */
+            background: #c42f8d;
+            color: white;
+            width: 100%;
+            max-width: 375px;
+            padding: 10px 15px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background: #c42f8d;
-            color: white;
-            padding: 10px 15px;
             border-radius: 10px;
+            z-index: 9999;
         }
 
-        .header button {
+        .banner button {
             background: none;
             border: none;
             color: white;
@@ -41,15 +55,20 @@
         }
 
         .menu {
+            width: 100%;
             margin-top: 15px;
+            display: flex;
+            gap: 16px;
+            justify-content: space-between;
         }
 
         .menu a {
-            display: block;
+            display: flex;
             text-decoration: none;
             color: black;
             font-size: 16px;
             margin-bottom: 10px;
+            padding: 16px;
         }
 
         .download-btn {
@@ -60,21 +79,22 @@
             border-radius: 5px;
             cursor: pointer;
             font-size: 16px;
-            width: 100%;
+            width: 240px;
         }
 
         .card {
-            background: linear-gradient(45deg, #ff6a00, #a100f2);
+            background: #c42f8d;
             color: white;
             padding: 20px;
             border-radius: 10px;
             margin-top: 20px;
             text-align: center;
+            width: 880px;
         }
 
         .btn-group {
             display: flex;
-            flex-direction: column;
+            flex-direction: row;
             gap: 10px;
             margin-top: 15px;
         }
@@ -93,20 +113,23 @@
             color: white;
         }
 
-        .btn-group button img {
-            width: 20px;
-            height: 20px;
+        .mainContainer {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
         }
     </style>
 </head>
 <body>
+<div class="mainContainer">
+<!-- 🔹 Банер-кнопка -->
+<div class="banner" id="depositBanner">
+    <span>Відкрити депозит</span>
+    <!-- <button onclick="closeBanner()">✖</button> -->
+</div>
 
 <div class="container">
-    <div class="header">
-        <span>Відкрити депозит</span>
-        <button>✖</button>
-    </div>
-
     <div class="menu">
         <a href="#">Депозити</a>
         <a href="#">O.Картка+</a>
@@ -119,16 +142,55 @@
         <p>Підзаголовок</p>
 
         <div class="btn-group">
-            <button><img src="appstore.svg" alt=""> App Store</button>
-            <button><img src="googleplay.svg" alt=""> Google Play</button>
-            <button><img src="appgallery.svg" alt=""> AppGallery</button>
+            <button>App Store</button>
+            <button>Google Play</button>
+            <button>AppGallery</button>
         </div>
 
         <p>Швидка реєстрація через Дія або BankID</p>
     </div>
 </div>
+</div>
+
+<script src="/smart-script.js"></script>
+<!-- 🔹 Смарт-скрипт -->
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+    console.log("Проверяем AF_SMART_SCRIPT:", window.AF_SMART_SCRIPT);
+
+    if (window.AF_SMART_SCRIPT && window.AF_SMART_SCRIPT.generateOneLinkURL) {
+        var oneLinkURL = "https://obank-wta.onelink.me/8TaX";
+        var mediaSource = { keys: ["utm_source"], defaultValue: "web" };
+        var custom_ss_ui = { paramKey: "af_ss_ui", defaultValue: "true" };
+
+        var result = window.AF_SMART_SCRIPT.generateOneLinkURL({
+            oneLinkURL: oneLinkURL,
+            afParameters: {
+                mediaSource: mediaSource,
+                afCustom: [custom_ss_ui],
+            },
+        });
+
+        if (result && result.clickURL) {
+            document.getElementById("depositBanner").addEventListener("click", function () {
+                window.open(result.clickURL, "_blank");
+            });
+            console.log("Смарт-баннер ссылка:", result.clickURL);
+        } else {
+            console.error("Ошибка: `clickURL` не получен!");
+        }
+    } else {
+        console.error("Ошибка: AF_SMART_SCRIPT не загружен!");
+    }
+});
+
+  </script>
+  
+<script>
+    function closeBanner() {
+        document.getElementById("depositBanner").style.display = "none";
+    }
+</script>
 
 </body>
-
-
 </html>
