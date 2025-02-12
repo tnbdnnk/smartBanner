@@ -9,36 +9,66 @@
     <link rel="stylesheet" href="index.css">
     <title>Банківський сервіс</title>
 </head>
-<body>
-    <div class="mainContainer">
-    <div class="banner" id="depositBanner">
-        <span>Відкрити депозит</span>
-        <button onclick="closeBanner()">✖</button>
-    </div>
-
-    <div class="containerBanner">
-        <div class="menu">
+<body style="background-color: #ffffff;">
+    <header class="header-banner">
+        <div class="logo">
+            <img src="logoIdeaObank.png" alt="IdeaBank">
+        </div>
+        <nav class="nav">
             <a href="#">Депозити</a>
             <a href="#">O.Картка+</a>
             <a href="#">FAQ</a>
-            <button class="download-btn">Завантажити</button>
-        </div>
-
-        <div class="card">
-            <h2>ЗАГОЛОВОК</h2>
-            <p>Підзаголовок</p>
-
-            <div class="btn-group">
-                <button>App Store</button>
-                <button>Google Play</button>
-                <button>AppGallery</button>
+        </nav>
+        <button class="contact-btn">Завантажити</button>
+    </header>
+    <main class="main">
+        <section class="hero">
+            <div class="hero-content">
+                <div class="hero-title">
+                    <h1>ДЕПОЗИТИ</h1>
+                    <p>Підзаголовок</p>
+                </div>
+                <div class="hero-qr-buttons">
+                    <img src="qr.png" alt="QR Code">
+                    <div class="download-buttons">
+                        <div class="buttons">
+                            <button>App Store</button>
+                            <button>Google Play</button>
+                            <button>AppGallery</button>
+                        </div>
+                        <p class="register-text">Швидка реєстрація через Дія або BankID</p>
+                    </div>
+                </div>
             </div>
+            <div class="hero-image">
+                <img src="draco.png" alt="Дракон з монетами">
+            </div>
+        </section>
+    
+        <section class="advantages">
+            <h2>ПЕРЕВАГИ O.КАРТКИ+</h2>
+            <div class="advantages-grid">
+                <div class="advantage-card">
+                    <img src="" alt="Європейський капітал">
+                    <p>Європейський капітал</p>
+                </div>
+                <div class="advantage-card">
+                    <img src="" alt="35 років стабільної роботи">
+                    <p>35 років стабільної роботи в Україні</p>
+                </div>
+                <div class="advantage-card">
+                    <img src="" alt="Гарантування ФГВФО">
+                    <p>100% гарантування ФГВФО</p>
+                </div>
+            </div>
+        </section>
+    </main>
 
-            <p>Швидка реєстрація через Дія або BankID</p>
-        </div>
+    <div class="banner" id="depositBannerContainer">
+        <button class="depositBanner" id="depositBanner" >Відкрити депозит</button>
+        <button onclick="closeBanner()" class="close-banner">&times;</button>
     </div>
-    </div>
-
+    
     <script src="smart-script.js"></script>
     <script>
         document.addEventListener("DOMContentLoaded", function () {
@@ -69,14 +99,12 @@
             console.error("Ошибка: AF_SMART_SCRIPT не загружен!");
         }
     });
-
     </script>
     
     <script>
         function closeBanner() {
-            document.getElementById("depositBanner").style.display = "none";
+            document.getElementById("depositBannerContainer").style.display = "none";
         }
     </script>
-
 </body>
 </html>
