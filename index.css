@@ -1,111 +1,247 @@
+
 body {
-    font-family: "Roboto", sans-serif;
-    font-size: 14px;
-    letter-spacing: 0.03em;
-    background-color: #ffffff;
-    }
-
-.container {
+    font-family: Arial, sans-serif;
+    background: #e6e7e9;
     margin: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-
-    background-color: white;
-    border-radius: 10px;
-    /*padding: 15px;*/
-    
+    padding: 0;
 }
 
-/* 🔹 Банер-кнопка */
-.banner {
-    /* position: fixed; */
-    /* top: 0; */
-    /* left: 50%; */
-    /* transform: translateX(-50%); */
-    background: #c42f8d;
-    color: white;
-    width: 100%;
-    max-width: 375px;
-    padding: 10px 15px;
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+}
+
+ul,
+ol {
+  padding-left: 0;
+  margin: 0;
+}
+
+img {
+  display: block;
+}
+
+.link {
+  text-decoration: none;
+}
+
+.list {
+  list-style: none;
+}
+
+.img {
+  width: 100%;
+}
+
+/* 🔹 Шапка */
+.header {
+    background: white;
+    padding: 10px 20px;
     display: flex;
+    align-items: center;
     justify-content: space-between;
-    align-items: center;
-    border-radius: 10px;
-    z-index: 9999;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
 }
 
-.banner button {
-    background: none;
+.logo img {
+    width: 40px;
+}
+
+.search {
+    margin: 0 10px;
+    padding: 10px 18px;
+    border-radius: 20px;
     border: none;
-    color: white;
-    font-size: 18px;
+    background-color: #e6e7e9;
+    font-size: 14px;
+    width: 480px;
+}
+
+.header-icons span {
+    margin: 0 10px;
+    font-size: 20px;
     cursor: pointer;
 }
 
-.menu {
-    width: 100%;
-    margin-top: 15px;
-    display: flex;
-    gap: 16px;
-    justify-content: space-between;
-}
-
-.menu a {
-    display: flex;
-    text-decoration: none;
-    color: black;
-    font-size: 16px;
-    margin-bottom: 10px;
-    padding: 16px;
-}
-
-.download-btn {
-    background: black;
-    color: white;
-    padding: 10px 15px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-    width: 240px;
-}
-
-.card {
-    background: #c42f8d;
-    color: white;
-    padding: 20px;
-    border-radius: 10px;
-    margin-top: 20px;
-    text-align: center;
-    width: 880px;
-}
-
-.btn-group {
+/* 🔹 Основной контейнер */
+.container {
     display: flex;
     flex-direction: row;
-    gap: 10px;
-    margin-top: 15px;
+    margin-top: 60px;
 }
 
-.btn-group button {
-    width: 100%;
+/* 🔹 Боковое меню */
+.sidebar {
+    width: 250px;
+    padding: 15px;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar li {
     padding: 10px;
-    border: none;
-    border-radius: 5px;
     font-size: 16px;
     cursor: pointer;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    background: black;
-    color: white;
 }
 
-.mainContainer {
+.sidebar li:hover {
+    background: #e4e6eb;
+    border-radius: 5px;
+}
+
+/* 🔹 Центральная лента */
+.content {
     display: flex;
-    flex-direction: column;
+    flex: 1;
+    padding: 15px;
     align-items: center;
     justify-content: center;
+}
+
+/* 🔹 Рекламный пост */
+.ad-card {
+    display: flex;
+    flex-direction: column;
+    background: white;
+    width: 450px;
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    /* gap: 16px; */
+}
+
+.ad-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.ad-logo {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+    border: 1px solid #9c9c9c;
+}
+
+.ad-info h3 {
+    font-size: 16px;
+    margin: 0;
+}
+
+.ad-info span {
+    font-size: 12px;
+    color: gray;
+}
+
+.ad-text {
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.ad-images {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.ad-image {
+    position: relative;
+    width: 100%;
+}
+
+.ad-image img {
+    width: 100%;
+    border-radius: 5px;
+}
+
+.ad-images-more {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 16px;
+}
+
+.ad-images-more-text {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.ad-images-more-text p {
+    margin: 0;
+}
+
+.ad-images-more button {
+    background-color:#d1d1d1;
+    color: #000000;
+    border: none;
+    height: 36px;
+    width: 120px;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: all ease 0.3s;
+}
+
+.ad-images-more button:hover {
+    background-color: #2f6de0;
+    color: #ffffff;
+}
+
+.ad-footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 24px;
+
+}
+
+.ad-footer button {
+    background-color: transparent;
+    border: none;
+    color: #969696;
+    font-size: 14px;
+}
+
+/* 🔹 Правая колонка */
+.right-sidebar {
+    width: 250px;
+    padding: 15px;
+}
+
+.ad-section {
+    background: white;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.ad-section img {
+    width: 100%;
+    border-radius: 5px;
+}
+
+.birthdays {
+    margin-top: 20px;
+    background: white;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
 }
