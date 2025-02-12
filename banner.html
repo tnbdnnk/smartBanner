@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/1.1.0/modern-normalize.min.css"
+    integrity="sha512-wpPYUAdjBVSE4KJnH1VR1HeZfpl1ub8YT/NKx4PuQ5NmX2tKuGu6U/JRp5y+Y8XG2tV+wKQpNHVUX03MfMFn9Q=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="banner.css">
+    <title>Банківський сервіс</title>
+</head>
+<body>
+    <div class="mainContainer">
+    <div class="banner" id="depositBanner">
+        <span>Відкрити депозит</span>
+        <button onclick="closeBanner()">✖</button>
+    </div>
+
+    <div class="container">
+        <div class="menu">
+            <a href="#">Депозити</a>
+            <a href="#">O.Картка+</a>
+            <a href="#">FAQ</a>
+            <button class="download-btn">Завантажити</button>
+        </div>
+
+        <div class="card">
+            <h2>ЗАГОЛОВОК</h2>
+            <p>Підзаголовок</p>
+
+            <div class="btn-group">
+                <button>App Store</button>
+                <button>Google Play</button>
+                <button>AppGallery</button>
+            </div>
+
+            <p>Швидка реєстрація через Дія або BankID</p>
+        </div>
+    </div>
+    </div>
+
+    <script src="smart-script.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+        console.log("Проверяем AF_SMART_SCRIPT:", window.AF_SMART_SCRIPT);
+
+        if (window.AF_SMART_SCRIPT && window.AF_SMART_SCRIPT.generateOneLinkURL) {
+            var oneLinkURL = "https://obank-wta.onelink.me/8TaX";
+            var mediaSource = { keys: ["utm_source"], defaultValue: "web" };
+            var custom_ss_ui = { paramKey: "af_ss_ui", defaultValue: "true" };
+
+            var result = window.AF_SMART_SCRIPT.generateOneLinkURL({
+                oneLinkURL: oneLinkURL,
+                afParameters: {
+                    mediaSource: mediaSource,
+                    afCustom: [custom_ss_ui],
+                },
+            });
+
+            if (result && result.clickURL) {
+                document.getElementById("depositBanner").addEventListener("click", function () {
+                    window.open(result.clickURL, "_blank");
+                });
+                console.log("Смарт-баннер ссылка:", result.clickURL);
+            } else {
+                console.error("Ошибка: `clickURL` не получен!");
+            }
+        } else {
+            console.error("Ошибка: AF_SMART_SCRIPT не загружен!");
+        }
+    });
+
+    </script>
+    
+    <script>
+        function closeBanner() {
+            document.getElementById("depositBanner").style.display = "none";
+        }
+    </script>
+
+</body>
+</html>
